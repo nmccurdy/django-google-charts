@@ -2,7 +2,6 @@ import json
 
 from abc import abstractmethod
 
-from django.utils.six import with_metaclass
 from django.utils.html import format_html, mark_safe
 
 from .utils import DateTimeEncoder, OptionsDict
@@ -18,7 +17,7 @@ class ChartMeta(type):
         return super(ChartMeta, cls).__new__(cls, name, bases, attrs)
 
 
-class Chart(with_metaclass(ChartMeta, object)):
+class Chart(object, metaclass=ChartMeta):
     options = {}
     columns = None
     chart_type = 'LineChart'
